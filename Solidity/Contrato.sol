@@ -135,5 +135,26 @@ contract Contrato { // Nombre del contrato. Siempre comenzar con esta keyword.
         if (msg.sender != owner) revert("Solo el dueño del contrato puede modificarlo.");
         _;
     }
+
+    /**
+        Manejo de errores:
+        Assert: Permite evaluar un valor. Principalmente se usa para pruebas de contratos.
+        Revert: Descripción anterior.
+        Require: Evalua una condición y en caso de no cumplirla ejecuta un revert. Puede mostrar un mensaje.
+     */
     
+    modifier EsOwner2() {
+        // Queremos que el usuario sea el creador del contrato, de lo contrario desplegar el mensaje.
+        require(msg.sender === owner, "El usuario no es el creador del contrato");
+    }
+
+    /**
+        Tipos de almacenamiento:
+        Storage: El almacenamiento presistente de los contratos. Su costo es superior.
+        Memory: Almacenamiento temporal, su contenido está ligado al ámbito de la función que lo declara. Costo menor al del storage.
+        Calldata: Donde se alojan los paramaetros. Su comportamiento es parecido a Memory.
+     */
+
+     
+
 }
